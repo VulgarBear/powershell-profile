@@ -1,8 +1,5 @@
-###########################
-#                         #
-# VulgarBear PWSH Profile #
-#                         #
-###########################
+### PowerShell Profile Refactor
+### Version 1.03 - Refactored
 
 # Initial GitHub.com connectivity check with 1 second timeout
 $canConnectToGitHub = Test-Connection github.com -Count 1 -Quiet -TimeoutSeconds 1
@@ -71,6 +68,7 @@ function Update-PowerShell {
     }
 }
 Update-PowerShell
+
 
 # Admin Check and Prompt Customization
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -240,37 +238,6 @@ function lazyg {
     git push
 }
 
-# Quick Access to Editing the Profile
-function ep { vim $PROFILE }
-
-# Simplified Process Management
-function k9 { Stop-Process -Name $args[0] }
-
-# Enhanced Listing
-function la { Get-ChildItem -Path . -Force | Format-Table -AutoSize }
-function ll { Get-ChildItem -Path . -Force -Hidden | Format-Table -AutoSize }
-
-# Git Shortcuts
-function gs { git status }
-
-function ga { git add . }
-
-function gc { param($m) git commit -m "$m" }
-
-function gp { git push }
-
-function g { z Github }
-
-function gcom {
-    git add .
-    git commit -m "$args"
-}
-function lazyg {
-    git add .
-    git commit -m "$args"
-    git push
-}
-
 # Quick Access to System Information
 function sysinfo { Get-ComputerInfo }
 
@@ -289,9 +256,8 @@ Set-PSReadLineOption -Colors @{
     String = 'DarkCyan'
 }
 
-# Oh My Posh Config
-
-oh-my-posh --init --shell pwsh --config "C:\Users\lucas\Documents\PowerShell\shanselman.json" | Invoke-Expression
+## Final Line to set prompt
+oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
     Invoke-Expression (& { (zoxide init powershell | Out-String) })
 } else {
@@ -304,5 +270,3 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
         Write-Error "Failed to install zoxide. Error: $_"
     }
 }
-
-## Variables
