@@ -252,8 +252,8 @@ function pst { Get-Clipboard }
 # Enhanced PowerShell Experience
 Set-PSReadLineOption -Colors @{
     Command = 'DarkMagenta'
-    Parameter = 'Cyan'
-    String = 'DarkCyan'
+    Parameter = 'DarkCyan'
+    String = 'DarkGreen'
 }
 
 ## Final Line to set prompt
