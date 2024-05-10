@@ -238,6 +238,9 @@ function lazyg {
     git push
 }
 
+# Launch useful applications
+function geek { C:\ProgramData\chocolatey\bin\geek.exe }
+
 # Quick Access to System Information
 function sysinfo { Get-ComputerInfo }
 
