@@ -252,6 +252,12 @@ function cpy { Set-Clipboard $args[0] }
 
 function pst { Get-Clipboard }
 
+# Convert image to webp
+
+function conv-webP ($file) {
+    magick mogrify --format webP $file
+}
+
 # Enhanced PowerShell Experience
 Set-PSReadLineOption -Colors @{
     Command = 'DarkMagenta'
