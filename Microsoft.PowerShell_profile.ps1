@@ -252,6 +252,9 @@ function cpy { Set-Clipboard $args[0] }
 
 function pst { Get-Clipboard }
 
+# gsudo alias
+function sudo { gsudo } 
+
 # Convert image to webp
 function convwebP ($file) {
     magick mogrify -format webP $file
