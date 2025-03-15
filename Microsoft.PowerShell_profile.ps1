@@ -281,3 +281,6 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
         Write-Error "Failed to install zoxide. Error: $_"
     }
 }
+
+# fnm requirements
+fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
